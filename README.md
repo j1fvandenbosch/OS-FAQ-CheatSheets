@@ -16,4 +16,4 @@ Current OS’s
      . most versions
      . Windows 10 21H1 – OS Build 21390
 
-other US will be added as required
+other OS's will be added as required
