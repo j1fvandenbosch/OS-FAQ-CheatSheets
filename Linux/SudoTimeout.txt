@@ -1,0 +1,5 @@
+sudo visudo
+
+Defaults        timestamp_timeout=30
+
+

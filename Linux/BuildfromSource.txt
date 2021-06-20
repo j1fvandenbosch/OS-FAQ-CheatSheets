@@ -1,0 +1,26 @@
+Install the essentials
+$ sudo apt-get install build-essential git
+
+Next get the grab the project.. 
+$ wget https://www.example.com/test.tar.gz
+OR
+$ git clone https://github.com/ChrisTitusTech/gno...
+
+Extract Tar file - Skip if git clone used
+$ tar -xzvf test.tar.gz
+
+Resolve Dependencies
+$ ./configure
+**LOOK FOR ERRORS! install any missing packages before continuing. 
+
+Compile project
+$ make
+
+Install project
+$ sudo make install
+
+Notes:
+-Program won't be updated
+-To uninstall you much use $ sudo make uninstall from directory
+**If directory is deleted, you will need to recompile before uninstalling
+

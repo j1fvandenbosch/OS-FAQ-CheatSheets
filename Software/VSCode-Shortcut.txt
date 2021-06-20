@@ -1,0 +1,3 @@
+ control +  ~  # to open close terminal
+ control +  b  # to close open left bar menu
+ 

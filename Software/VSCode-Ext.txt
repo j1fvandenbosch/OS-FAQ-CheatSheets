@@ -1,0 +1,15 @@
+prettier
+formating toggle
+advanced-new-file
+better comments
+quokka.js
+live server
+auto rename tag
+bracket pair colorizer
+Bookmarks
+cloak
+css peak
+debuger fdoir chrome
+dotenv
+editorconfig for vscode
+html css suport

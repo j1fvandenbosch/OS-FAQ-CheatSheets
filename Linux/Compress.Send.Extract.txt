@@ -1,0 +1,21 @@
+
+tar -czvf name-of-archive.tar.gz /path/to/directory-or-file
+
+-c: Create an archive.
+-z: Compress the archive with gzip.
+-v: Display progress in the terminal while creating the archive
+-f: Allows you to specify the filename of the archive.
+
+
+
+scp -P<<port>> <<file to send>> <<user id>>@<<receiving server>>:<<loocation forfile>>
+
+
+
+tar -xzvf archive.tar.gz
+
+-x: to extract the contents 
+-z: Compress the archive with gzip.
+-v: Display progress in the terminal while creating the archive
+-f: Allows you to specify the filename of the archive.
+

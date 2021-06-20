@@ -1,0 +1,29 @@
+
+# Crontab config
+
+*    *    *   *    *  Command_to_execute
+|    |    |    |   |       
+|    |    |    |    Day of the Week ( 0 - 6 ) ( Sunday = 0 )
+|    |    |    |
+|    |    |    Month ( 1 - 12 )
+|    |    |
+|    |    Day of Month ( 1 - 31 )
+|    |
+|    Hour ( 0 - 23 )
+|
+Min ( 0 - 59 )
+
+
+
+Open the file
+
+/etc/rsyslog.d/50-default.conf
+Find the line that starts with:
+
+#cron.*
+uncomment that line, save the file, and restart rsyslog:
+
+sudo service rsyslog restart
+You should now see a cron log file here:
+
+/var/log/cron.log

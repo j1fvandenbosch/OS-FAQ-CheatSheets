@@ -1,0 +1,7 @@
+GitHub Desktop Reposatory
+https://github.com/shiftkey/desktop/releases
+
+download latest *.deb file
+
+then run install from download folder
+sudo gdebi GitHubDesktop-linux-*-linux1.deb

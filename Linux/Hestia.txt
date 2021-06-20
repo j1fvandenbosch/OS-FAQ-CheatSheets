@@ -1,0 +1,30 @@
+Congratulations!
+
+You have successfully installed Hestia Control Panel on your server.
+
+Ready to get started? Log in using the following credentials:
+
+    Admin URL:  https://198.58.115.179:8083
+    Username:   admin
+    Password:   l5HTwSLIfC5BTMRh
+
+Thank you for choosing Hestia Control Panel to power your full stack web server,
+we hope that you enjoy using it as much as we do!
+
+Please feel free to contact us at any time if you have any questions,
+or if you encounter any bugs or problems:
+
+Web:     https://www.hestiacp.com/
+Forum:   https://forum.hestiacp.com/
+Discord: https://discord.gg/nXRUZch
+GitHub:  https://www.github.com/hestiacp/hestiacp
+
+Note: Automatic updates are enabled by default. If you would like to disable them,
+please log in and navigate to Server > Updates to turn them off.
+
+Help support the Hestia Control Panel project by donating via PayPal:
+https://www.hestiacp.com/donate
+--
+Sincerely yours,
+The Hestia Control Panel development team
+

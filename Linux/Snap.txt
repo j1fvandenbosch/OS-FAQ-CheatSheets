@@ -1,0 +1,68 @@
+
+# sudo apt install snapd# install snap
+
+sudo apt update 
+sudo apt install snapd
+
+# start stop & status of
+sudo systemctl enable --now snapd.socket
+sudo systemctl is-active snapd.socket
+sudo systemctl status snapd.socket
+sudo systemctl is-enabled snapd.socket
+
+# part of the snap configuration
+sudo ln -s /var/lib/snapd/snap /snap
+
+# list version of snap
+snap version
+
+# list app in snap
+snap find <package type> # "chat server" / "media players"
+
+# list informati0n on a package
+snap info <package>
+
+# to install an app
+sudo snap install <package>
+sudo snap install --edge <package>        
+sudo snap install --beta <package>
+sudo snap install --candidate <package>
+
+# to list installed snaps
+sudo snap list
+sudo snap list <package>
+sudo snap list --all <package> # list all versions
+
+# updating snaps
+sudo snap refresh <package>
+sudo snap resdresh  # update all snaps on local system
+
+# to revert to an earler version
+sudp snap revert <package>
+
+# disable or enable a snap app
+sudo snap disable <package>
+sudo snap enable <package>
+
+# to remove a snap app
+sudo snap remove <package>
+sudo snap remove --revision=XYZ <package>
+
+# to creat a snap shot
+snap save <package>
+snap save  # save all snap apps
+
+# to view saved snaps
+sudo snap saved
+sudo snao saved --id=X
+
+# verify intergrity of a snap shot
+sudo snap check-snapshot <id>
+
+# to restore a snap
+sudo snap restore <id>
+
+# to delete a snapshot
+sudo snap forget <id>
+sudo snap forget <id> <package>
+

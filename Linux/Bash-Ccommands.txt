@@ -1,0 +1,21 @@
+
+sudo ss -tupln
+mount -l -t ext4
+
+ln -s file1 file2 #example ln -s /usr/share/landscape/landscape-sysinfo.wrapper 50-motd-news
+unlink <file name> example unlink 50-motd-news
+
+
+ps aux
+
+
+gsettings reset org.gnome.shell app-picker-layout   #Alphabetical order
+
+apt list -a pkgNameHere   # list install
+
+gnome-extensions list
+
+sudo apt-get install -y dconf-editor
+
+xdg-mime query default inode/directory #list what file manger is being used
+

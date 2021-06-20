@@ -1,0 +1,27 @@
+
+
+ssh -p 22 jfvandenbosch@lish-dallas.linode.com
+
+
+ctrl+a d to exit
+
+
+kill            - kill stuck screen sessions
+exit            - exit from lish
+help            - this menu
+
+[return]        - connect to console
+version         - display running kernel version
+boot            - boot last used (or the only) config profile
+boot N          - boot the specified config profile
+shutdown        - shut down the Linode
+reboot          - shut down, then boot the last used config profile
+reboot N        - shut down, then boot the specified config profile
+sysrq X         - send SysRq X to your Linode
+destroy         - pulls the plug on a running Linode, no fs sync, no warning
+
+jobs            - view the job queue for your Linode
+configs         - view the configuration profiles for your Linode
+config N        - view configuration profile details for profile N
+status          - view the status of your Linode
+logview         - view contents of console log

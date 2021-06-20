@@ -1,0 +1,49 @@
+
+16 th of June, 2021
+--------------------
+
+
+16 th of June, 2021
+--------------------
+uninstalled VS Code via snap
+forgot VS Code snapshot
+installed VS Code
+
+15 th of June, 2021
+--------------------
+installed powershell
+installed gitmux
+
+
+13 th of June, 2021
+--------------------
+installed flatpak
+installed flpak builder
+installed Gnome plugin for flatpak
+installed razercomander (via flatpak)
+installeds VS Code
+installed Microsoft font pack
+installed Cascadia code pack
+installed Kitty Terminal
+uninstall Kitty Trminal
+installed fonts-powerline
+installed Terminator Terminal
+installed xclip
+installed neofetch
+
+
+12 th of June, 2021
+--------------------
+Added Razer's Open PPA link
+Installed Racer's Synape
+Added Polychromatic PPA
+Installed Polychromatic
+
+
+11 th of June, 2021
+--------------------
+Installed gdebi core
+Installed GitHub Desktop
+Installed curl
+Installed GitHub CLI
+Installed Tmux
