@@ -1,0 +1,77 @@
+sudo apt update
+
+sudo apt list --upgradable
+
+sudo apt upgrade    sudo apt dist-upgrade **removed old/unused packages**
+
+sudo reboot
+
+
+sudo apt full-upgrade
+
+sudo apt-get dist-upgrade
+
+sudo rpi-update
+sudo apt-get install rpi-update
+
+uname -a, -v, -r
+g
+sudo apt-get autoremove
+
+timedatectl
+
+raspi-config
+
+free m
+df -ah
+du
+
+ip address,  ifconfig, ip addr show eth0
+netstatn -tulpn
+
+sudo pihole restartdns
+
+lspci
+
+lsusb
+
+lsblk
+
+lsof
+
+parted /dev/<<disk>> mklabel gpt
+parted -a opt /dev/<<disk>> mkpart primary ext4 0% 100%
+
+mkfs.ext4 /dev/<<disk>> 
+
+mount -a
+
+nutui
+
+mtr --curses 8.8.8.8
+
+top
+ps aux | grep ngix
+
+lsof | head
+
+printenv;   ( set -o posix ; set ) | less
+
+tune2fs -l /dev/sdb1
+
+sudo ss -tupln
+
+sudo !!   #redo last
+
+whoami
+who
+w
+pinky
+id
+last
+
+lsb_release -a
+uname -a
+cat /etc/os-release
+
+locate

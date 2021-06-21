@@ -1,0 +1,4 @@
+
+
+wsl --list --verbose
+wsl -l -v

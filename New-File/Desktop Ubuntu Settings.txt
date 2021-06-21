@@ -1,0 +1,7 @@
+
+nano ~/.bash_aliases
+
+#definations
+alias jvb-dns="ssh pi@jvb-dns.lan" #192.168.1.21
+alias jvb-server="ssh ubuntu@jvb-server.lan" #192.168.1.31
+alias jvb-octopi350="ssh pi@jvb-octopi350.pts" #192.168.1.51

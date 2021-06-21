@@ -1,0 +1,24 @@
+
+Install Raspberry Pi OS Lite on micro sd
+
+create blank file called "SSH"
+create a file called"wpa_supplicant.conf"
+		ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+		update_config=1
+		country=US
+
+		network={
+			ssid="1035StJD-5G"
+			psk="EeyF$YE@xBFSkZ1!ro"
+		}
+
+sudo apt update
+sudo apt upgrade
+
+cd /bin
+sudo nano cls
+		clear
+
+sudo chmod 755 cls
+
+raspi-config
