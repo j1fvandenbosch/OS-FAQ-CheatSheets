@@ -1,4 +1,6 @@
 
+cat /etc/shells
+
 sudo ss -tupln
 mount -l -t ext4
 
