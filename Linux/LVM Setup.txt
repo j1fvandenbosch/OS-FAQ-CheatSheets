@@ -1,0 +1,22 @@
+lsblk  # list block devices
+
+pvcreate # turn raw or partition devices into physical volumes
+	pvcreate /dev/sdb /dev/sdc (etc...)
+
+PVDISPLAY # display physical volumes
+
+vgcreate # create volume group
+	vgcreate bucket /dev/sdb /dev/sdc (etc...)
+
+vgdisplay # display volume group
+
+lvcreate # carve out partion
+	lvcreate -L 32G -n iTune_store bucket
+
+lvdisplay # display logical volume
+
+mkfs.ext4 /dev/bucket/iTune_store
+
+lvextend # grow the logical volume
+	lvextend -L+5G /dev/bucket/iTune_store
+

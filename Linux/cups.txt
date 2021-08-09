@@ -1,0 +1,6 @@
+
+localhost:631/printers
+
+lpr
+lpq
+lprm

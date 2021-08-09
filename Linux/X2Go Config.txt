@@ -1,0 +1,17 @@
+ sudo add-apt-repository ppa:x2go/stable
+[sudo] password for ubun:
+ Quick howto to turn your machine into an X2Go server:
+
+sudo apt-add-repository ppa:x2go/stable
+sudo apt-get update
+sudo apt-get install x2goserver x2goserver-xsession
+sudo apt-get install x2gomatebindings  # if you use MATE/mubuntu
+sudo apt-get install x2golxdebindings  # if you use LXDE/lubuntu
+
+Quick howto to install the x2goclient:
+
+sudo apt-add-repository ppa:x2go/stable
+sudo apt-get update
+sudo apt-get install x2goclient
+
+Enjoy!

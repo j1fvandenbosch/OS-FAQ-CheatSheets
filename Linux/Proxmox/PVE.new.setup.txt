@@ -1,0 +1,21 @@
+
+
+Rermove Proxmox Subscription Nag
+sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart pveproxy.service
+
+Update source list for apt [see source.list.txt]
+
+run apt-get update
+run apt-get upgrade
+
+# from the GUI, 
+#click on datacenter
+#click on storage
+#select local-lvm
+#click remove
+
+# go to shell 
+
+lvremove /dev/pve/data
+lvresize -l +100%FREE /dev/pve/root
+resize2fs /dev/mapper/pve-root
