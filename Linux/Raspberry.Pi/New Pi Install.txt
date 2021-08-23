@@ -22,3 +22,6 @@ sudo nano cls
 sudo chmod 755 cls
 
 raspi-config
+
+pihole restartdns
+

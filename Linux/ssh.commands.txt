@@ -1,0 +1,42 @@
+systemctl stop.service
+
+systemctl start.service
+
+systemctl restart ssh.service
+
+systemctl status ssh.service
+
+
+
+
+systemctl enable ssh.service
+
+
+
+update-rc.d ssh defaults
+systemctl enable ssh.socket
+
+
+# login debug 3 with specific auth key
+ssh -4 -i ~/.ssh/<<server>> root@<<server>> -vvvv -E ~/log/ssh.log
+
+
+# File resetssh.sh
+#!/bin/bash
+
+####################################
+#                                  #
+# Stop then Start ssh.service      #
+#                                  #
+####################################
+
+systemctl stop ssh.service
+
+sleep 3s
+
+systemctl start ssh.service
+
+sleep 2s
+
+systemctl status ssh.service
+

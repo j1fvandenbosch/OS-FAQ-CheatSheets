@@ -3,8 +3,10 @@ ssh-keygen -t ecdsa -b 521 -C "jvb-workstation"
 
 scp jvb-eserver.pub -P xxx username@remoteserver:/home/username/.ssh/authorized_keys
 
-sudo systemctl stop ssh
-sudo systemctl start ssh
-sudo systemctl status ssh
+systemctl stop ssh.service
+systemctl start ssh.service
+systemctl status ssh.service
+
+
 
 

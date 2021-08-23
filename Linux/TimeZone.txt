@@ -1,0 +1,11 @@
+timedatectl
+
+ls -l /etc/localtime
+
+cat /etc/timezone
+
+timedatectl set-timezone    timezone
+
+
+
+timedatectl set-timezone America/Denver

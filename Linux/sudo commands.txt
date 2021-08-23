@@ -29,8 +29,6 @@ du
 ip address,  ifconfig, ip addr show eth0
 netstatn -tulpn
 
-sudo pihole restartdns
-
 lspci
 
 lsusb
@@ -74,4 +72,7 @@ lsb_release -a
 uname -a
 cat /etc/os-release
 
-locate
+locate  #needs to be installed
+
+
+hostnamectl

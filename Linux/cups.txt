@@ -4,3 +4,8 @@ localhost:631/printers
 lpr
 lpq
 lprm
+
+
+/var/log/cups/error_log
+
+http://localhost:631/admin
