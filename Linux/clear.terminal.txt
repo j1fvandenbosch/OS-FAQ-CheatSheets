@@ -1,0 +1,4 @@
+
+how to clear a terminal from a script
+
+# echo -e \\e[2J\\e[\;H

@@ -5,4 +5,46 @@
 sudo exportfs -a
 sudo systemctl restart nfs-kernel-server
 
+ps aux | grep nfsd
+
+
+ apt -y install nfs-kernel-server
+ 
+nano /etc/idmapd.conf
+# line 6: uncomment and change to your domain name
+Domain = srv.world
+
+
+nano /etc/exports
+# write settings for NFS exports
+# for example, set [/home/nfsshare] as NFS share
+/home/nfsshare 10.0.0.0/24(rw,no_root_squash)
+
+
+systemctl restart nfs-server
+
+exportfs -ra
+
+showmount -e localhost
+
+
+
+# resetnfs
+#!/bin/bash
+
+####################################
+#                                  #
+# Stop then Start ssh.service      #
+#                                  #
+####################################
+
+systemctl stop nfs-server.service
+
+sleep 3s
+
+systemctl start nfs-server.service
+
+sleep 2s
+
+systemctl status nfs-server.service
 

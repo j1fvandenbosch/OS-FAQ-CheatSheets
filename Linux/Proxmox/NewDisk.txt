@@ -1,0 +1,12 @@
+
+fdisk /dev/sdX # select new disk and creat partion
+
+pvcreate /dev/sdX1 # Create physical volume
+
+vgcreate <<Volume Name>> /dev/sdX1 # Create volume group
+
+From ther Proxmox GUI
+
+Add LVM
+Create a shared directory on the proxmox host node (mount point)
+

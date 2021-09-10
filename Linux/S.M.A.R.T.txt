@@ -1,0 +1,4 @@
+
+check status of a disk with
+
+smartctl -a  /dev/sda

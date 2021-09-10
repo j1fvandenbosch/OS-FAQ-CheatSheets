@@ -1,6 +1,6 @@
-systemctl stop.service
+systemctl stop ssh.service
 
-systemctl start.service
+systemctl start ssh.service
 
 systemctl restart ssh.service
 

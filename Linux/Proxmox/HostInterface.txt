@@ -1,0 +1,32 @@
+
+auto lo
+iface lo inet loopback
+
+auto enp8s0
+iface enp8s0 inet static
+	address 192.168.1.XX/24
+	gateway 192.168.1.1
+#Management NIC
+
+
+auto vmbr0
+iface vmbr0 inet manual
+	bridge-ports none
+	bridge-stp off
+	bridge-fd 0
+#Interconnect Bridge
+
+
+auto eno1
+iface eno1 inet manual
+# Guest NIC
+
+
+auto vmbr1
+iface vmbr1 inet static
+	address 192.168.1.YY/24
+	bridge-ports eno1
+	bridge-stp off
+	bridge-fd 0
+#Guest Bridge
+

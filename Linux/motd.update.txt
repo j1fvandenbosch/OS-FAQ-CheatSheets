@@ -1,0 +1,21 @@
+
+apt-get install -y figlet
+
+apt-get install ruby-full
+
+apt-get install -y lolcat
+	#move lolcat from /usr/games to /usr/bin
+
+pam.d/sshd
+	#session optional pam_motd.so noupdate
+
+rm /etc/update-motd.d/*
+
+cp ~/Scripts/motd/update-motd.d/* /etc/update-motd.d
+
+
+run-parts /etc/update-motd.d/
+
+
+cat /run/motd.dynamic
+
