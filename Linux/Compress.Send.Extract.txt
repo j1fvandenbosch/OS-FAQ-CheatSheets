@@ -8,7 +8,7 @@ tar -czvf name-of-archive.tar.gz /path/to/directory-or-file
 
 
 
-scp -P<<port>> <<file to send>> <<user id>>@<<receiving server>>:<<loocation forfile>>
+scp -P<<port>> <<file to send>> <<user id>>@<<receiving server>>:<<loocation for file>>
 
 
 
