@@ -8,7 +8,13 @@ tar -czvf name-of-archive.tar.gz /path/to/directory-or-file
 
 
 
-scp -P<<port>> <<file to send>> <<user id>>@<<receiving server>>:<<loocation for file>>
+scp 	-4 \
+	-i <<location of ssh key>> \
+	-P 22 \
+	-r {{only used if moving a folder}}
+	-v \
+	<<location of file>> \
+	<<user>>@<<server>>:<<location to put file>>
 
 
 
