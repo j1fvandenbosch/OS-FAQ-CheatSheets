@@ -1,15 +1,31 @@
+<< Edit /etc/apt/sources.list >>
 
+	deb http://ftp.us.debian.org/debian bullseye main contrib
+
+	deb http://ftp.us.debian.org/debian bullseye-updates main contrib
+
+	# security updates
+	deb http://security.debian.org bullseye/updates main contrib
+
+	# not for production use
+	deb http://download.proxmox.com/debian bullseye pve-no-subscription
+
+
+<< Edit /etc/apt/sources.list.d/pve-enterprise.list >>
+
+	# deb https://enterprise.proxmox.com/debian/pve bullseye pve-enterprise
+
+
+<< Remove Local VLM >>
 # from the GUI, 
-#click on datacenter
-#click on storage
-#select local-lvm
-#click remove
-
+	#click on datacenter
+	#click on storage
+	#select local-lvm
+	#click remove
 # go to shell 
-
-lvremove /dev/pve/data
-lvresize -l +100%FREE /dev/pve/root
-resize2fs /dev/mapper/pve-root
+	lvremove /dev/pve/data
+	lvresize -l +100%FREE /dev/pve/root
+	resize2fs /dev/mapper/pve-root
 
 
 
