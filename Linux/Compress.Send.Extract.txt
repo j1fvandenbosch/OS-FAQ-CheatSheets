@@ -20,8 +20,18 @@ scp 	-4 \
 
 tar -xzvf archive.tar.gz
 
+--strip=? the number of leading "/dirname" to remove
 -x: to extract the contents 
 -z: Compress the archive with gzip.
 -v: Display progress in the terminal while creating the archive
 -f: Allows you to specify the filename of the archive.
+
+
+
+tar \
+	--create \
+	--gzip \
+	--verbose \
+	--file <<location and name to place *.tar.gz>> \
+	<<<location of folder or file to archive>>>
 
