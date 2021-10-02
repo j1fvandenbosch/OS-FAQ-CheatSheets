@@ -1,0 +1,45 @@
+# FIRST_SYSTEM_[GU]ID to LAST_SYSTEM_[GU]ID inclusive is the range for UIDs
+# for dynamically allocated administrative and system accounts/groups.
+FIRST_SYSTEM_UID=100
+LAST_SYSTEM_UID=999
+
+FIRST_SYSTEM_GID=100
+LAST_SYSTEM_GID=999
+
+# FIRST_[GU]ID to LAST_[GU]ID inclusive is the range of UIDs of dynamically
+# allocated user accounts/groups.
+FIRST_UID=1000
+LAST_UID=29999
+
+FIRST_GID=1000
+LAST_GID=29999
+
+
+# create the account without a password, shell or home directory
+adduser  --no-create-home --uid
+
+
+# create the group account
+groupaded --gid <<<new GID>>>
+
+
+
+
+
+
+
+
+addgroup --gid 29999 fileshare
+adduser --uid 29999 -gid 29999 -disabled-login --shell=/bin/false --no-create-home fileshare
+
+
+
+
+
+
+
+
+
+http://manpages.ubuntu.com/manpages/focal/en/man8/adduser.8.html
+
+http://manpages.ubuntu.com/manpages/trusty/man8/groupadd.8.html

@@ -1,0 +1,59 @@
+
+# General command for adding new disks
+
+# select new disk and creat partion
+
+blkid
+
+ls -lha /dev/disk/by-id
+
+# partition the required disk
+cfdisk /dev/disk/by-id/<<<<BY ID>>>>
+
+# format newly creared partition
+mkfs.ext4 /dev/disk/by-id/<<<<BY ID>>>> 
+
+
+# Mounting Disk By
+mount /dev/disk/by-id/<<<<BY ID>>>> <<<<mount location>>>>
+
+# Mounting on startup from fstab
+
+# mounting for <<<<mount location>>>> folder which stores images and iso
+# <file system>                                 <mount point>  <type> <options> <dump> <pass>
+#
+/dev/disk/by-id/<<<<BY ID>>>> <<<<mount location>>>>    ext4      rw        0     5
+
+
+
+
+# Commands for Proxmox PVE Disk 
+
+pvcreate /dev/sdx1 # create physical volume
+
+vgcreate <<Volume Name>> /dev/sdX1 # Create volume group
+
+
+#Create a shared directory on the proxmox host node (mount point)
+
+lsblk  # list block devices
+
+pvcreate # turn raw or partition devices into physical volumes
+	pvcreate /dev/sdb /dev/sdc (etc...)
+
+
+PVDISPLAY # display physical volumes
+vgcreate # create volume group
+	vgcreate bucket /dev/sdb /dev/sdc (etc...)
+
+
+vgdisplay # display volume group
+lvcreate # carve out partion
+	lvcreate -L 32G -n iTune_store bucket
+
+
+lvdisplay # display logical volume
+mkfs.ext4 /dev/bucket/iTune_store
+lvextend # grow the logical volume
+	lvextend -L+5G /dev/bucket/iTune_store
+

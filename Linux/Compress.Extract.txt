@@ -7,17 +7,6 @@ tar -czvf name-of-archive.tar.gz /path/to/directory-or-file
 -f: Allows you to specify the filename of the archive.
 
 
-
-scp 	-4 \
-	-i <<location of ssh key>> \
-	-P 22 \
-	-r {{only used if moving a folder}}
-	-v \
-	<<location of file>> \
-	<<user>>@<<server>>:<<location to put file>>
-
-
-
 tar -xzvf archive.tar.gz
 
 --strip=? the number of leading "/dirname" to remove

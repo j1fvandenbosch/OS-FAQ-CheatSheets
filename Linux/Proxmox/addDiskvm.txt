@@ -1,0 +1,31 @@
+
+List disk by-id with lsblk
+The lsblk is pre-installed, you can print and map the serial and WWN
+identifiers of attached disks using the following two commands:
+
+
+lsblk -o +MODEL,SERIAL,WWN
+ls -l /dev/disk/by-id/
+
+
+You can also use an extended one liner to get the path directly:
+
+lsblk |awk 'NR==1{print $0" DEVICE-ID(S)"}NR>1{dev=$1;printf $0" ";system("find /dev/disk/by-id -lname \"*"dev"\" -printf \" %p\"");print "";}'|grep -v -E 'part|lvm'
+
+
+Short List
+
+find /dev/disk/by-id/ -type l|xargs -I{} ls -l {}|grep -v -E '[0-9]$' |sort -k11|cut -d' ' -f9,10,11,12
+
+
+
+Update Configuration
+qm set  592  -scsi2 /dev/disk/by-id/<<<disk to be added to vm>>>
+or
+update VM 592: -scsi2 /dev/disk/by-id/<<<disk to be added to vm>>>
+
+Check Configuration File
+grep <<<serial number of disk added>>>/etc/pve/qemu-server/<<<proxmos guest id>>>.conf
+
+output
+scsi2: /dev/disk/by-id/<<<path info of disk obtained above>>>,size=2930266584K

@@ -1,0 +1,6 @@
+journalctl -b
+
+dmesg
+
+
+

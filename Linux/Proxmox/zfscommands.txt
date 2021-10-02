@@ -1,0 +1,8 @@
+zfs set mountpoint=/var/lib/vz/images/ veDataset
+
+
+zpool ststus
+
+zpool iostat
+
+zpool list –o name,size,capacity

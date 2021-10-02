@@ -1,0 +1,13 @@
+
+
+apt update
+apt list --upgradable
+apt upgrade
+apt dist-upgrade **removed old/unused packages**
+apt full-upgrade
+apt-get dist-upgrade
+apt-get autoremove
+
+rpi-update
+apt-get install rpi-update
+

@@ -1,0 +1,5 @@
+
+
+second drive for jvb-backup
+
+scsi2: /dev/disk/by-id/ata-G-Tech_G-SAFE_Gen4_,size=2930266584K

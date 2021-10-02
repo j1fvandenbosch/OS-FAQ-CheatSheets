@@ -1,0 +1,49 @@
+1 Login to Proxmox host via web Shell or SSH
+
+2 Navigate to Datacenter -> Storage, delete the directory first
+
+2.1 Navigate to Datacenter -> host name/cluster name -> Directory, note down the
+Device “/dev/disk/by-uuid/xxxxxxxxxxxxxxx”
+
+3 Execute following command (In this guide, we want to delete mounted folder
+“/testfolder” on disk “/dev/sdd”)
+
+umount -f /dev/disk/by-uuid/.......
+umount -f /dev/sdd
+4 Looking for .mount files
+
+cd /etc/systemd/system
+ls -ahlp
+We will see a file with name “mnt-pve-testfolder.mount” or
+“mnt-pve-test\x2dxfs.mount” the full path is “/etc/systemd/mnt-pve-testfolder.mount”
+
+(If you are not sure which .mount file to delete, use this command to see the
+content of it “cat mnt-pve-testfolder.mount”, find the .mount file which has
+the same uuid as the one from Proxmox web gui -> host name/cluster Name -> Directory)
+
+5 Use following command to delete it
+
+rm -f mnt-pve-testfolder.mount
+6 Now the mounted directory is removed from “Directory” view from Proxmox
+
+Now we want to make it available for other usages, to achieve this, we have to
+do following steps
+
+7 Execute following command for reformat the disk
+
+# fdisk
+fdisk /dev/sdd
+g
+w
+# Format the disk as ext4
+mkfs.ext4 /dev/sdd
+# Format the disk as xfs
+mkfs.xfs -f /dev/sdd
+Note: If creating directory failed in Proxmox web gui, use “mkfs.ext4” or
+“mkfs.xfs” command to format the disk to the format that we do not want, then
+in the creating the directory step in Proxmox, finally reformat to the format
+that we actually need
+
+8 Now we can go back to the Proxmox web gui, navigate to Directory view,
+click on “Create: Directory” the disk is now available for use or we can use
+it for other purposes

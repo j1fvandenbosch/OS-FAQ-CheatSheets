@@ -1,6 +1,6 @@
 # Installed locate
 
-sudo apt-get install locate
+apt-get install locate
 
 # Prepare locate command for first use
 sudo updatedb

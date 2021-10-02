@@ -11,3 +11,15 @@ scp [OPTION] [user@]SRC_HOST:]file1 [user@]DEST_HOST:]file2
 -C - This option forces scp to compresses the data as it is sent to the destination machine.
 -r - This option tells scp to copy directories recursively.
 
+
+
+
+scp 	-4 \
+	-i <<location of ssh key>> \
+	-P 22 \
+	-r {{only used if moving a folder}}
+	-v \
+	<<location of file>> \
+	<<user>>@<<server>>:<<location to put file>>
+
+

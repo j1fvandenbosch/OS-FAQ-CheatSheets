@@ -1,0 +1,16 @@
+#!/bin/bash
+zpool create -f -o ashift=12 veDataset raidz1 \
+	/dev/disk/by-id/ata-WDC_WD10EADS-00L5B1_WD-WCAU4C256397 \
+	/dev/disk/by-id/ata-WDC_WD10EADS-00M2B0_WD-WCAV56140286 \
+	/dev/disk/by-id/ata-WDC_WD10EADS-00M2B0_WD-WMAV50374369
+
+zfs set compression=lz4 veDataset
+
+zpool add -f veDataset \
+	log /dev/disk/by-id/ata-WDC_WD10EACS-00D6B1_WD-WCAU4C821522-part1 \
+	cache /dev/disk/by-id/ata-WDC_WD10EACS-00D6B1_WD-WCAU4C821522-part2
+
+zpool status
+zfs get compression veDataset
+
+

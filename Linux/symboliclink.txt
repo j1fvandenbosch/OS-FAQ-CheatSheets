@@ -1,0 +1,28 @@
+Ubuntu users utilize the “ln” command for creating symbolic links in their
+system. This command creates hard links by default.
+
+
+However, you can add the “-s” or the “–symbolic” option if you want
+to create a soft link.
+
+
+ ln -s [Source_File_Path] [Symbolic_Link_Path]
+ 
+ ln -s [Source_Directory_Path] [Symbolic_Link_Destination_Path]
+ 
+
+
+
+Add the “-f” option in the “ln” command to overwrite the already
+created symbolic link forcefully:
+
+
+
+How to remove symbolic link in Ubuntu
+The symbolic link becomes unusable if you remove the source file or transfer
+it to another location. In that case, you can delete the symbolic link by using
+two commands: The “rm” and “unlink” commands.
+
+rm [Symbolic_Link_Path]
+unlink [Symbolic_Link_Path]
+

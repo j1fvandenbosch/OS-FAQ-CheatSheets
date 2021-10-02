@@ -33,3 +33,4 @@ PowerShell with:
 	------   ----               -----------
 	Running  QEMU-GA            QEMU Guest Agent
 
+qm agent <vmid> ping

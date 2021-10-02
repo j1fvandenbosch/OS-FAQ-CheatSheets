@@ -1,8 +1,7 @@
 
 #APT sorce list located /etc/apt
-# Remove files in /etc/apt/source.list.d
 
-
+<<<<for Promox VE servers>>>>
 # Main Debian update files
 deb http://ftp.debian.org/debian bullseye main contrib
 deb http://ftp.debian.org/debian bullseye-updates main contrib
@@ -13,3 +12,23 @@ deb http://security.debian.org/debian-security bullseye-security main contrib
 # PVE pve-no-subscription repository provided by proxmox.com,
 deb http://download.proxmox.com/debian/pve bullseye pve-no-subscription
 
+
+<<<<for Proxmos Backup Server>>>>
+
+# Main Debian update files
+deb http://ftp.debian.org/debian bullseye main contrib
+deb http://ftp.debian.org/debian bullseye-updates main contrib
+
+# security updates
+deb http://security.debian.org/debian-security bullseye-security main contrib
+
+# PBS pbs-no-subscription repository provided by proxmox.com,
+deb http://download.proxmox.com/debian/pbs bullseye pbs-no-subscription
+
+
+<<<<modify pbs-enterprise.list file in /etc/apt/source.list.d>>>>
+
+
+comit out the line 
+<<deb https://enterprise.proxmox.com/debian/pbs bullseye pbs-enterprise>>
+with a # at the begining

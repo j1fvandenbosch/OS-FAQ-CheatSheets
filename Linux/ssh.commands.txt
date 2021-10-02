@@ -40,3 +40,17 @@ sleep 2s
 
 systemctl status ssh.service
 
+
+
+# generare a ssh key
+ssh-keygen -t ecdsa -b 521 -C "jvb-workstation"
+
+scp jvb-eserver.pub -P xxx username@remoteserver:/home/username/.ssh/authorized_keys
+
+systemctl stop ssh.service
+systemctl start ssh.service
+systemctl status ssh.service
+
+
+
+

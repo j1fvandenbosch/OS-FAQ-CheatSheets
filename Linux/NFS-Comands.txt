@@ -1,25 +1,33 @@
 
-# nfs files
-/etc/exports
-
-sudo exportfs -a
-sudo systemctl restart nfs-kernel-server
-
-ps aux | grep nfsd
+# NFS server install
+apt install nfs-kernel-server
 
 
- apt -y install nfs-kernel-server
- 
+# verify
+cat /proc/fs/nfsd/versions
+systemctl status nfs-kernel-server.services
+
+
+#
 nano /etc/idmapd.conf
-# line 6: uncomment and change to your domain name
-Domain = srv.world
+	# line 6: uncomment and change to your domain name
+	Domain = srv.world
 
 
+# nfs files
 nano /etc/exports
-# write settings for NFS exports
-# for example, set [/home/nfsshare] as NFS share
-/home/nfsshare 10.0.0.0/24(rw,no_root_squash)
+	# write settings for NFS exports
+	# for example, set [/home/nfsshare] as NFS share
+	/home/nfsshare 10.0.0.0/24(rw,no_root_squash)
 
+
+exportfs -a
+systemctl restart nfs-kernel-server.service
+
+
+
+#some usfule commands
+ps aux | grep nfsd
 
 systemctl restart nfs-server
 
@@ -29,22 +37,16 @@ showmount -e localhost
 
 
 
-# resetnfs
-#!/bin/bash
+# reset_nfs
+	#!/bin/bash
 
-####################################
-#                                  #
-# Stop then Start ssh.service      #
-#                                  #
-####################################
+	# stop systemctl nfs-service.service
+	systemctl stop nfs-server.service
 
-systemctl stop nfs-server.service
+	# stop systemctl nfs-service.service
+	systemctl start nfs-server.service
 
-sleep 3s
+	# stop systemctl nfs-service.service
+	systemctl status nfs-server.service
 
-systemctl start nfs-server.service
-
-sleep 2s
-
-systemctl status nfs-server.service
 
