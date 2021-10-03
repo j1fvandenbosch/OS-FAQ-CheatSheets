@@ -1,0 +1,14 @@
+qm monitor YOUR-VM-ID-HERE 
+system_wakeup 
+quit
+
+info usbhost
+
+# example of usb passthrough
+qm set YOUR-VM-ID-HERE -usb1 host=04d9:0141
+qm set YOUR-VM-ID-HERE -usb2 host=046d:c52b
+
+
+diskutil list
+
+sudo mount -t msdos /dev/disk0s1/EFI /Volumes/EFI
