@@ -1,0 +1,8 @@
+
+# Install Hiri snap package.
+
+snap install hiri
+
+# To be able to open links in emails you will need to install snapd-xdg-open on Ubuntu.
+
+apt-get install snapd-xdg-open
