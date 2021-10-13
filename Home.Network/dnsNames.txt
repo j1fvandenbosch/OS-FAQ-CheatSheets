@@ -1,0 +1,11 @@
+
+
+Internet-facing servers:
+www.example.com
+mail.example.com
+dns1.example.com
+
+Internal machines:
+dc1.corp.example.com
+dns1.corp.example.com
+client1.corp.example.com

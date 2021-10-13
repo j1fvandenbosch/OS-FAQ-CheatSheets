@@ -1,0 +1,35 @@
+
+
+curl https://releases.rancher.com/install-docker/20.10.sh | sh
+
+
+docker version
+
+
+sudo usermode -aG docker <<<User ID>>>
+
+# Rancher
+
+#!/bin/bash
+
+docker run -d --restart=unless-stopped \
+  -p 80:80 -p 443:443 \
+  -v /opt/rancher:/var/lib/rancher \
+  --privileged \
+  rancher/rancher:latest
+
+
+docker ps
+
+# Password
+# For a "docker run" installation:
+# Find your container ID with docker ps, then run:
+docker logs container-id 2>&1 | grep "Bootstrap Password:"
+
+
+# To stop the Hub service gracefully, run the command:
+docker exec <containerId> stop
+
+
+# For a graceful shutdown, you can also use the standard docker kill command:
+docker kill --signal=SIGTERM <containerId>

@@ -1,0 +1,21 @@
+# Prevent start
+# Create an empty file to prevent the service from starting
+
+touch /etc/cloud/cloud-init.disabled
+
+
+# Disable all services (uncheck everything except "None"):
+
+dpkg-reconfigure cloud-init
+
+
+# Uninstall the package and delete the folders
+
+dpkg-reconfigure cloud-init
+apt-get purge cloud-init
+rm -rf /etc/cloud/ && sudo rm -rf /var/lib/cloud/
+
+
+# Restart the computer
+
+reboot

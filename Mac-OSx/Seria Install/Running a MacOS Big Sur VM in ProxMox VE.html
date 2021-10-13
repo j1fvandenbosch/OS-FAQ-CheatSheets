@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0047)https://i12bretro.github.io/tutorials/0551.html -->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Running a MacOS Big Sur VM in ProxMox VE</title>
+        
+								<script type="text/javascript" src="./Running a MacOS Big Sur VM in ProxMox VE_files/jquery-3.5.1.min.js"></script>
+				        <script type="text/javascript">
+          $(function(){
+            $('textarea').each(function(i,e){
+              theTextarea = $(this);
+              theTextarea.height((theTextarea[0].scrollHeight-5) +'px');
+            });
+
+            $('li').each(function(i,e){
+              var uuid = 'li_' + Math.floor(Math.random() * Math.floor(1000000)).toString() + '_' + i.toString();
+              $(this).contents().wrap('<span id="'+ uuid +'"><label for="cb_'+ uuid +'"></label></span>');
+              $(this).prepend('<input type="checkbox" class="completeBox" id="cb_' + uuid +'" rel="'+ uuid +'" />')
+            });
+
+            $('code,div.codeBlock,textarea.codeBlock').each(function(i,e){
+              theElement = $(this);
+              var lines = theElement.html().split("\n");
+              theElement.empty();
+              for(l=0;l<lines.length;l++){
+                if($.trim(lines[l]) != '' && $.trim(lines[l]).substr(0,1) != '#' && $.trim(lines[l]).indexOf(' #') == -1 && lines[l].substr(0, 4).toUpperCase() != 'REM '){
+									                  theElement.append('<input type="image" src="images/clipboard.png" value="" class="copy-text" rel="copy_'+ i +'_'+ l +'" data-clipboard-text="'+ lines[l].replace(/"/g, '&quot;') +'" /><span id="copy_'+ i +'_'+ l +'">'+ lines[l] +'</span>');
+									                } else {
+                  theElement.append(lines[l]);
+                }
+              }
+            });
+
+            $(document).on('click','input.copy-text',function(){
+              theButton = $(this);
+														$('input.copy-text').attr('src','images/clipboard.png');
+							              $('span.copy-animation,span.copy-animation-ps').removeClass('copy-animation copy-animation-ps');
+              try {
+                if($('#'+ theButton.attr('rel')).parent('div').hasClass('PS')){
+                  $('#'+ theButton.attr('rel')).addClass('copy-animation-ps');
+								} else if($('#'+ theButton.attr('rel')).parent('div').hasClass('CMD')){
+									$('#'+ theButton.attr('rel')).addClass('copy-animation-cmd');
+                } else {
+                  $('#'+ theButton.attr('rel')).addClass('copy-animation');
+                }
+                navigator.clipboard.writeText(theButton.data('clipboard-text').replace(/<[^>]*>?/gm, ''));
+																theButton.attr('src','images/clipboard_active.png');
+								              } catch(err) {
+              }
+              return false;
+            });
+
+            $(document).on('click','input.completeBox',function(){
+              theBox = $(this);
+              $('#'+ theBox.attr('rel')).addClass('strikethrough');
+              theBox.prop('disabled',true);
+              theBox.parent('li').prevAll().each(function(i,e){
+                theLI = $(this);
+                if(theLI.find('input[type=checkbox]').not(':checked')){
+                  $('#'+ theLI.find('input[type=checkbox]').attr('rel')).addClass('strikethrough');
+                  theLI.find('input[type=checkbox]').prop('checked',true).prop('disabled',true);
+                }
+              });
+            });
+
+            if(window.self !== window.top){
+															window.parent.$('iframe.stepsFrame').height((this['scrollingElement']['scrollHeight']+20) +'px');
+							            }
+          });
+        </script>
+        <link href="./Running a MacOS Big Sur VM in ProxMox VE_files/steps.css" rel="stylesheet" type="text/css">
+      </head>
+      <body>
+        <div id="gridContainer">
+          <div class="topMargin"></div>
+          <div id="listName" class="topMargin">
+            <h1>Running a MacOS Big Sur VM in ProxMox VE</h1>
+          </div>
+          <div></div>
+          <div id="content">
+          <ol>
+	<li><input type="checkbox" class="completeBox" id="cb_li_343599_0" rel="li_343599_0" disabled=""><span id="li_343599_0" class="strikethrough"><label for="cb_li_343599_0">Download a MacOS Big Sur .iso </label></span><span id="li_343599_0"><label for="cb_li_343599_0"><a href="https://archive.org/search.php?query=Mac%20OS%20Big%20Sur&amp;and[]=mediatype%3A%22software%22" target="_blank">Download</a></label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_987238_1" rel="li_987238_1" disabled=""><span id="li_987238_1" class="strikethrough"><label for="cb_li_987238_1">Download KVM OpenCore bootloader </label></span><span id="li_987238_1"><label for="cb_li_987238_1"><a href="https://github.com/thenickdude/KVM-Opencore/releases" target="_blank">Download</a></label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_576653_2" rel="li_576653_2" disabled=""><span id="li_576653_2" class="strikethrough"><label for="cb_li_576653_2">Extract the downloaded KVM OpenCore bootloader .gz file</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_249534_3" rel="li_249534_3" disabled=""><span id="li_249534_3" class="strikethrough"><label for="cb_li_249534_3">Upload the Big Sur and KVM OpenCore .iso files to the Proxmox ISO library</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_165072_4" rel="li_165072_4" disabled=""><span id="li_165072_4" class="strikethrough"><label for="cb_li_165072_4">Log into the ProxMox web UI</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_832653_5" rel="li_832653_5" disabled=""><span id="li_832653_5" class="strikethrough"><label for="cb_li_832653_5">Right click the ProxMox node name &gt; Create VM</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_382531_6" rel="li_382531_6" disabled=""><span id="li_382531_6" class="strikethrough"><label for="cb_li_382531_6">Type MacOSBigSur in the name field, set the VM ID to 1100 (unless 1100 is in use) &gt; Next</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_984343_7" rel="li_984343_7" disabled=""><span id="li_984343_7" class="strikethrough"><label for="cb_li_984343_7">On the OS tab, set the Type field to Other and select the KVM OpenCore .iso in the ISO Image field &gt; Next</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_746063_8" rel="li_746063_8" disabled=""><span id="li_746063_8" class="strikethrough"><label for="cb_li_746063_8">On the System tab, set the Graphic card field to VMware compatible, BIOS field to OVMF (UEFI), Check the Add EFI Disk checkbox, Machine field to q35 and the SCSI Controller to VirtIO SCSI &gt; Next</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_382557_9" rel="li_382557_9" disabled=""><span id="li_382557_9" class="strikethrough"><label for="cb_li_382557_9">On the Hard Disk tab, set the Bus/Device field to VirtIO Block, Disk size field to 64, Cache field to Write back (unsafe) &gt; Next</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_97180_10" rel="li_97180_10" disabled=""><span id="li_97180_10" class="strikethrough"><label for="cb_li_97180_10">On the CPU tab, set Cores field to 4, Type field to Penryn &gt; Next</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_59662_11" rel="li_59662_11" disabled=""><span id="li_59662_11" class="strikethrough"><label for="cb_li_59662_11">On the Memory tab, set the Memory to 4096 &gt; Next</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_758306_12" rel="li_758306_12" disabled=""><span id="li_758306_12" class="strikethrough"><label for="cb_li_758306_12">On the Network tab, set the Model field to VMware vmxnet3 &gt; Next</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_811126_13" rel="li_811126_13"><span id="li_811126_13"><label for="cb_li_811126_13">Verify the summary and click Finish</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_730612_14" rel="li_730612_14"><span id="li_730612_14"><label for="cb_li_730612_14">Click the MacOSBigSur VM &gt; Select Hardware from the left sub-navigation menu</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_200971_15" rel="li_200971_15"><span id="li_200971_15"><label for="cb_li_200971_15">Click Add &gt; CD/DVD Drive</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_430347_16" rel="li_430347_16"><span id="li_430347_16"><label for="cb_li_430347_16">Select the MacOS Big Sur .iso downloaded earlier &gt; Click Create</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_570967_17" rel="li_570967_17"><span id="li_570967_17"><label for="cb_li_570967_17">Select the MacOSBigSur VM &gt; Options &gt; Boot Order</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_251745_18" rel="li_251745_18"><span id="li_251745_18"><label for="cb_li_251745_18">Set the KVM OpenCore disk as the first boot option &gt; Click OK</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_841815_19" rel="li_841815_19"><span id="li_841815_19"><label for="cb_li_841815_19">Right click the ProxMox node name &gt; Console</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_626967_20" rel="li_626967_20"><span id="li_626967_20"><label for="cb_li_626967_20">Run the following commands in the terminal
+	</label></span><span id="li_626967_20"><label for="cb_li_626967_20"><div class="codeBlock"># edit the VM conf file, change 1100 to the VM ID for the Big Sur VM<br><input type="image" src="./Running a MacOS Big Sur VM in ProxMox VE_files/clipboard.png" value="" class="copy-text" rel="copy_0_1" data-clipboard-text="	nano /etc/pve/qemu-server/1100.conf"><span id="copy_0_1">	nano /etc/pve/qemu-server/1100.conf</span></div></label></span><span id="li_626967_20"><label for="cb_li_626967_20">
+	</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_526839_21" rel="li_526839_21"><span id="li_526839_21"><label for="cb_li_526839_21">If running on an Intel CPU, add the following line to the bottom of the .conf file:
+	</label></span><span id="li_526839_21"><label for="cb_li_526839_21"><p>args: -device isa-applesmc,osk="ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc" -smbios type=2 -device usb-kbd,bus=ehci.0,port=2 -cpu host,kvm=on,vendor=GenuineIntel,+kvm_pv_unhalt,+kvm_pv_eoi,+hypervisor,+invtsc</p></label></span><span id="li_526839_21"><label for="cb_li_526839_21">
+	</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_732022_22" rel="li_732022_22"><span id="li_732022_22"><label for="cb_li_732022_22">If running on an AMD CPU, add the following line to the bottom of the .conf file:
+	</label></span><span id="li_732022_22"><label for="cb_li_732022_22"><p>args: -device isa-applesmc,osk="ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc" -smbios type=2 -device usb-kbd,bus=ehci.0,port=2 -cpu Penryn,kvm=on,vendor=GenuineIntel,+kvm_pv_unhalt,+kvm_pv_eoi,+hypervisor,+invtsc,+pcid,+ssse3,+sse4.2,+popcnt,+avx,+avx2,+aes,+fma,+fma4,+bmi1,+bmi2,+xsave,+xsaveopt,check</p></label></span><span id="li_732022_22"><label for="cb_li_732022_22">
+	</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_380715_23" rel="li_380715_23"><span id="li_380715_23"><label for="cb_li_380715_23">Press CTRL+W and search for ,media=cdrom</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_158659_24" rel="li_158659_24"><span id="li_158659_24"><label for="cb_li_158659_24">Delete the ,media=cdrom from the two attached .iso files (KVM OpenCore and Big Sur) and add cache=unsafe</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_584560_25" rel="li_584560_25"><span id="li_584560_25"><label for="cb_li_584560_25">Press CTRL+O, Enter, CTRL+X to write the changes to the conf file</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_497455_26" rel="li_497455_26"><span id="li_497455_26"><label for="cb_li_497455_26">Back in the Proxmox web UI, right click the MacOSBigSur VM in the left navigation pane &gt; Start</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_624005_27" rel="li_624005_27"><span id="li_624005_27"><label for="cb_li_624005_27">Click console in the left sub-navigation menu</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_328878_28" rel="li_328878_28"><span id="li_328878_28"><label for="cb_li_328878_28">At the OpenCore menu, select UEFI Shell &gt; Press Enter</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_617030_29" rel="li_617030_29"><span id="li_617030_29"><label for="cb_li_617030_29">Type the following in the UEFI shell:
+	</label></span><span id="li_617030_29"><label for="cb_li_617030_29"><div class="codeBlock CMD"># change to the Big Sur .iso, the disk number may be different for you<br><input type="image" src="./Running a MacOS Big Sur VM in ProxMox VE_files/clipboard.png" value="" class="copy-text" rel="copy_1_1" data-clipboard-text="	fs0:&lt;br&gt;"><span id="copy_1_1">	fs0:<br></span>	# launch the MacOS installer<br><input type="image" src="./Running a MacOS Big Sur VM in ProxMox VE_files/clipboard.png" value="" class="copy-text" rel="copy_1_3" data-clipboard-text="	System\Library\CoreServices\boot.efi"><span id="copy_1_3">	System\Library\CoreServices\boot.efi</span></div></label></span><span id="li_617030_29"><label for="cb_li_617030_29">
+	</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_470090_30" rel="li_470090_30"><span id="li_470090_30"><label for="cb_li_470090_30">After a long initialization sequence the MAC OS Setup should start</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_150053_31" rel="li_150053_31"><span id="li_150053_31"><label for="cb_li_150053_31">Select Disk Utility</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_40039_32" rel="li_40039_32"><span id="li_40039_32"><label for="cb_li_40039_32">Select the VIRTIO Block Media &gt; Click Erase</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_329320_33" rel="li_329320_33"><span id="li_329320_33"><label for="cb_li_329320_33">Name the drive OS11 &gt; Set the Format to APFS &gt; Click Erase</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_370829_34" rel="li_370829_34"><span id="li_370829_34"><label for="cb_li_370829_34">Click Done &gt; Close Disk Utility</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_536193_35" rel="li_536193_35"><span id="li_536193_35"><label for="cb_li_536193_35">Click Install macOS Big Sur</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_477442_36" rel="li_477442_36"><span id="li_477442_36"><label for="cb_li_477442_36">Click Continue &gt; Click Agree &gt; Click Agree again</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_730750_37" rel="li_730750_37"><span id="li_730750_37"><label for="cb_li_730750_37">Select the OS11 disk &gt; Click Install</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_58645_38" rel="li_58645_38"><span id="li_58645_38"><label for="cb_li_58645_38">Wait while Mac OS 11 installs files, the VM will reboot several times</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_74827_39" rel="li_74827_39"><span id="li_74827_39"><label for="cb_li_74827_39">Press Enter at the OpenCore boot screen after each reboot to continue the MacOS installation</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_182746_40" rel="li_182746_40"><span id="li_182746_40"><label for="cb_li_182746_40">Select your Country &gt; Click Continue</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_112429_41" rel="li_112429_41"><span id="li_112429_41"><label for="cb_li_112429_41">Confirm your languages and keyboard layout &gt; Click Continue</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_675068_42" rel="li_675068_42"><span id="li_675068_42"><label for="cb_li_675068_42">Click Not Now on the Accessibility screen</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_759782_43" rel="li_759782_43"><span id="li_759782_43"><label for="cb_li_759782_43">Click Continue on the Data &amp; Privacy screen</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_945881_44" rel="li_945881_44"><span id="li_945881_44"><label for="cb_li_945881_44">Select Not Now on the Migration Assistant screen</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_835647_45" rel="li_835647_45"><span id="li_835647_45"><label for="cb_li_835647_45">Select Set Up Later and then Skip on the Apple ID screen</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_565868_46" rel="li_565868_46"><span id="li_565868_46"><label for="cb_li_565868_46">Click Agree &gt; Agree again</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_571962_47" rel="li_571962_47"><span id="li_571962_47"><label for="cb_li_571962_47">Enter a name, user name, password &gt; Click Continue</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_575349_48" rel="li_575349_48"><span id="li_575349_48"><label for="cb_li_575349_48">Click Customize Settings</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_786139_49" rel="li_786139_49"><span id="li_786139_49"><label for="cb_li_786139_49">Click Continue &gt; Select Use or Don't Use for Location Services</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_691732_50" rel="li_691732_50"><span id="li_691732_50"><label for="cb_li_691732_50">Pick a timezone &gt; Click Continue</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_370345_51" rel="li_370345_51"><span id="li_370345_51"><label for="cb_li_370345_51">Choose whether to share analytics with Apple &gt; Click Continue</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_493932_52" rel="li_493932_52"><span id="li_493932_52"><label for="cb_li_493932_52">Click Set Up Later on the Screen Time screen</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_87968_53" rel="li_87968_53"><span id="li_87968_53"><label for="cb_li_87968_53">Uncheck the Enable Ask Siri box &gt; Click Continue</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_945182_54" rel="li_945182_54"><span id="li_945182_54"><label for="cb_li_945182_54">Pick a theme &gt; Click Continue</label></span></li>
+	<li><input type="checkbox" class="completeBox" id="cb_li_600508_55" rel="li_600508_55"><span id="li_600508_55"><label for="cb_li_600508_55">Welcome to MacOS 11 Big Sur</label></span></li>
+</ol>
+          </div>
+        </div>
+      
+    
+  <div id="mackeeper-extension" style=""></div></body></html>
