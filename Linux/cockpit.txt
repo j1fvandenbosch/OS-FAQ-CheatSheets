@@ -1,0 +1,25 @@
+
+apt install cockpit -y
+
+
+#start and status of cockpit
+systemctl start cockpit
+
+systemctl status cockpit
+
+#cockpit listens on tcp port 9090
+#UFW firewall rule update for cockpit
+ss -tunlp | grep 9090
+ 
+# firewall update
+ufw allow 9090/tcp
+
+
+#check to see if NetworkManager is running
+nmcli d
+
+
+#disable NetworkManager to resolve
+# cannot refresh cache whilst offline
+systemctl stop NetworkManager.service
+systemctl disable NetworkManager.service

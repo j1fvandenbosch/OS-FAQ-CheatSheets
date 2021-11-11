@@ -1,0 +1,37 @@
+
+
+1 - Log in and update your server.
+
+apt update -y  &&  apt upgrade -y
+
+2 - Install 
+apt-get install gnupg2 -y
+
+# webmin script to install webmin  chmod to make it executable
+
+#!/bin/bash
+
+wget -qO - http://www.webmin.com/jcameron-key.asc | apt-key add -
+sh -c 'echo "deb http://download.webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list'
+apt update
+apt install webmin
+
+
+3 - check status
+
+systemctl status webmin
+
+5 - Configuring the firewall (Optional)
+
+ufw allow 10000/tcp
+ufw reload
+ufw status
+
+6 - Go to webmin login
+
+https://server-IP:10000/
+
+login with the user account created during the server install, same password 
+
+7 - Click on Refresh Modules, wait, then click on Un-used Modules, install BIND
+

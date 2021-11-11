@@ -1,55 +1,26 @@
-systemctl stop ssh.service
-
-systemctl start ssh.service
-
-systemctl restart ssh.service
-
-systemctl status ssh.service
-
-
-
-
-systemctl enable ssh.service
-
-
-
-update-rc.d ssh defaults
-systemctl enable ssh.socket
-
 
 # login debug 3 with specific auth key
 ssh -4 -i ~/.ssh/<<server>> root@<<server>> -vvvv -E ~/log/ssh.log
 
 
 # File resetssh.sh
-#!/bin/bash
+	#!/bin/bash
+	
+	systemctl stop ssh.service
+	systemctl start ssh.service
+	systemctl status ssh.service
 
-####################################
-#                                  #
-# Stop then Start ssh.service      #
-#                                  #
-####################################
 
-systemctl stop ssh.service
 
-sleep 3s
-
-systemctl start ssh.service
-
-sleep 2s
-
-systemctl status ssh.service
 
 
 
 # generare a ssh key
 ssh-keygen -t ecdsa -b 521 -C "jvb-workstation"
 
-scp jvb-eserver.pub -P xxx username@remoteserver:/home/username/.ssh/authorized_keys
+ssh-copy-id -i <<<location of pub key>>> username@remoteserver
 
-systemctl stop ssh.service
-systemctl start ssh.service
-systemctl status ssh.service
+scp jvb-eserver.pub -P xxx username@remoteserver:/home/username/.ssh/
 
 
 

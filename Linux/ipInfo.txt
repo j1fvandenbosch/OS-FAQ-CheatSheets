@@ -1,0 +1,9 @@
+
+#check for your internal IP address 
+ip a
+
+#check for currently used DNS server
+systemd-resolve --status | grep Current
+
+#display default gateway IP
+ip r

@@ -1,0 +1,26 @@
+
+# To make the directory /mnt/bindmounts/shared
+# accessible in the container with ID 100 under the path /shared,
+# use a configuration line like
+
+mp0: /mnt/bindmounts/shared,mp=/shared
+
+#in /etc/pve/lxc/100.conf. 
+
+
+
+# Alternatively, use
+
+pct set 100 -mp0 /mnt/bindmounts/shared,mp=/shared
+
+# to achieve the same result.
+
+
+
+
+# jvb-dns /mnt/BindConf
+# jvb-veserver2 /mnt/ContainerMount
+
+mp0: /mnt/HostMP,mp=/mnt/GuestMP
+
+pct set 620 -mp0 /mnt/HostMP,mp=/mnt/GuestMP

@@ -1,0 +1,17 @@
+
+qm list
+qm start <<<vmid>>>
+qm stop
+qm reboot 
+qm comfig
+pct set <<<vmid>>> --<<<option>>>
+
+
+pct list
+pct start <<<vmid>>>
+pct stop
+pct reboot
+pct config 
+pct enter
+pct set <<<vmid>>> -<<<option>>>
+pct push <<<vmid>>> <<<file to push>>> <<<location for file>>>

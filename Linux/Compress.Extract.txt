@@ -16,6 +16,12 @@ tar -xzvf archive.tar.gz
 -f: Allows you to specify the filename of the archive.
 
 
+tar -tvf archive.tar
+
+-t: list the contents of an archive
+-v: Display progress in the terminal while creating the archive
+-f: Allows you to specify the filename of the archive.
+
 
 tar \
 	--create \

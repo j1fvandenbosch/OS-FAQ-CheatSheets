@@ -1,7 +1,7 @@
 
 apt-get install -y figlet
 
-apt-get install ruby-full
+apt-get install -y ruby-full
 
 apt-get install -y lolcat
 	#move lolcat from /usr/games to /usr/bin
