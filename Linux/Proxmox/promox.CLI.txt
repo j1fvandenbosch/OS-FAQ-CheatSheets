@@ -15,3 +15,5 @@ pct config
 pct enter
 pct set <<<vmid>>> -<<<option>>>
 pct push <<<vmid>>> <<<file to push>>> <<<location for file>>>
+
+vzctl enter <<<vmid>>>

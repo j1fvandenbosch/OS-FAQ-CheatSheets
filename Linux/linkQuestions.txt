@@ -1,0 +1,18 @@
+
+uname = system release version etc.
+
+ip = ip...  addr show eth0
+
+fd = disk info
+
+service
+
+du = disk use
+
+netstat = network status  -tulpn
+
+ps aux = cpu uses ;; top & htop
+
+mount = disk 
+
+man {{comand}}
