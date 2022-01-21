@@ -4,7 +4,7 @@ qm start <<<vmid>>>
 qm stop
 qm reboot 
 qm comfig
-pct set <<<vmid>>> --<<<option>>>
+qm set <<<vmid>>> --<<<option>>>
 
 
 pct list
